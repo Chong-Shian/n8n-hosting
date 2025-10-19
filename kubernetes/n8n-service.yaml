@@ -4,9 +4,10 @@ metadata:
   labels:
     service: n8n
   name: n8n
-  namespace: n8n
+  namespace: n8n-ns
 spec:
   type: LoadBalancer
+  loadBalancerIP: 172.16.1.165
   ports:
     - name: "5678"
       port: 5678

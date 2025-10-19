@@ -4,7 +4,7 @@ metadata:
   labels:
     service: n8n
   name: n8n
-  namespace: n8n
+  namespace: n8n-ns
 spec:
   replicas: 1
   selector:
@@ -34,7 +34,7 @@ spec:
             - name: DB_TYPE
               value: postgresdb
             - name: DB_POSTGRESDB_HOST
-              value: postgres-service.n8n.svc.cluster.local
+              value: postgres-service.n8n-ns.svc.cluster.local
             - name: DB_POSTGRESDB_PORT
               value: "5432"
             - name: DB_POSTGRESDB_DATABASE
@@ -51,8 +51,18 @@ spec:
                   key: POSTGRES_NON_ROOT_PASSWORD
             - name: N8N_PROTOCOL
               value: http
+            - name: N8N_HOST
+              value: "n8n.bug-god.cc"
+            - name: N8N_PATH
+              value: "/"
             - name: N8N_PORT
               value: "5678"
+            - name: N8N_SECURE_COOKIE
+              value: "false"
+            - name: N8N_DEFAULT_LOCALE
+              value: zh-tw
+            - name: GENERIC_TIMEZONE
+              value: Asia/Taipei
           image: n8nio/n8n
           name: n8n
           ports:
